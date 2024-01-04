@@ -1,0 +1,51 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Budget Tracker</title>
+</head>
+<body>
+  <div id="app" >
+    <h1>Budget Tracker</h1>
+    <form id="expenseForm" method="post" action="/api/expenses">
+      <label for="description">Description:</label>
+      <input type="text" name="description" id="description" required>
+
+      <label for="amount">Amount:</label>
+      <input type="number" name="amount"  id="amount" required >
+
+      <button type="submit">Add Expense</button>
+    </form>
+
+    <div id="expensesList">
+      <!-- Expenses will be displayed here -->
+    </div>
+  </div>
+<script>
+
+async function fetchExpenses() {
+    try {
+      const response = await fetch('/api/expenses',{method:"GET"});
+      const expenses = await response.json();
+
+      expensesList.innerHTML = '';
+      expenses.forEach(expense => {
+        const expenseItem = document.createElement('div');
+        expenseItem.textContent = `${expense.description}: $${expense.amount.toFixed(2)}`;
+        expensesList.appendChild(expenseItem);
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+fetchExpenses();
+</script>
+  </body>
+
+
+  </html>

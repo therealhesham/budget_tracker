@@ -1,0 +1,25 @@
+{
+  "name": "budget-tracker",
+  "version": "1.0.0",
+  "description": "A simple budget tracker website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "nodemon": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.1.1",
+    "nodemon": "^3.0.2"
+  },
+  "keywords": [
+    "budget",
+    "tracker",
+    "node",
+    "express",
+    "mongodb"
+  ],
+  "author": "alaa abdullah",
+  "license": "MIT"
+}
